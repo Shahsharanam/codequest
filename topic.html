@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Play Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .play-btn {
+            background-color: #3498db;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .topics-container {
+            margin-top: 20px;
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        .topic {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+        }
+
+        .topic:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select a topic</h1>
+    <div class="button-container">
+        <div class="play-btn"><a href="{% url 'strings' %}">Strings</a></div>
+        <div class="play-btn"><a href="{% url 'strings' %}">Loops</a></div>
+        <div class="play-btn"><a href="{% url 'strings' %}">Conditional statement</a></div>
+        <div class="play-btn"><a href="{% url 'strings' %}">Functions</a></div>
+
+        <!-- <button class="play-btn" href="{% url 'strings' %}">Strings</button><br> -->
+        <!-- <button class="play-btn" >Loops</button><br>
+        <button class="play-btn" >Conditional statement</button><br> 
+        <button class="play-btn" >Functions</button><br>-->
+    </div>
+
+    <div id="topics-container" class="topics-container">
+        <!-- Topics will appear here -->
+    </div>
+
+    <!-- <script>
+        function showTopics(language) {
+            const topicsContainer = document.getElementById("topics-container");
+            
+            let topics;
+            switch(language) {
+                case 'C':
+                    topics = ['Strings', 'Functions', 'Variables', 'Loops', 'Conditional Statements'];
+                    break;
+                case 'C++':
+                    topics = ['Classes', 'Objects', 'Inheritance', 'Polymorphism', 'Templates'];
+                    break;
+                case 'Java':
+                    topics = ['OOP Concepts', 'Exceptions', 'Interfaces', 'Threads', 'Lambda Expressions'];
+                    break;
+                case 'Python':
+                    topics = ['Data Types', 'Functions', 'File Handling', 'Exception Handling', 'Modules'];
+                    break;
+                default:
+                    topics = [];
+            }
+            
+            // Clear previous topics
+            topicsContainer.innerHTML = '';
+
+            // Display new topics
+            if (topics.length > 0) {
+                topics.forEach(topic => {
+                    const div = document.createElement('div');
+                    div.className = 'topic';
+                    div.innerText = topic;
+                    topicsContainer.appendChild(div);
+                });
+                topicsContainer.style.display = 'block';
+            } else {
+                topicsContainer.style.display = 'none';
+            }
+        }
+    </script> -->
+<!-- </body>
+</html> -->

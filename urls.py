@@ -1,26 +1,28 @@
-"""
-URL configuration for CodeQuest project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path,include
-from django.conf import settings
-from django.conf.urls.static import static
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('', include('Design.urls')),
-]
+    path("", views.indexview,name="indexview"),
+    path('home', views.home, name='home'),
+    path('student_login', views.student_login, name='student_login'),
+    path('student_login1', views.student_login1, name='student_login1'),
+    path('language_selection', views.language_selection, name='language_selection'),
+    path('start_level', views.start_level, name='start_level'),
+    path('quiz_view', views.quiz_view, name='quiz_view'),
+    path('Logintrans', views.Logintrans, name='Logintrans'),
+    path('Logintrans1', views.Logintrans1, name='Logintrans1'),
+    path('user', views.user, name='user'),
+    path('topic', views.topic, name='topic'),
+    path('strings', views.strings, name='strings'),
+    path('strings2', views.strings2, name='strings2'),
+    path('strings3', views.strings3, name='strings3'),
+    path('strings4', views.strings4, name='strings4'),
+    path('strings5', views.strings5, name='strings5'),
+    path('strings6', views.strings6, name='strings6'),
+    path('quiz1', views.quiz1, name='quiz1'),
+    path('quiz2', views.quiz2, name='quiz2'),
+    path('quiz3', views.quiz3, name='quiz3'),
+    path('quiz4', views.quiz4, name='quiz4'),
+    path('quiz5', views.quiz5, name='quiz5')
 
-# urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

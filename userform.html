@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User form</title>
+
+<style>
+    /* Basic Reset */
+    body, h1, form, input, button {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+        background: #f4f4f9;
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    /* Container Styling */
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    /* Form Styling */
+    .login-form {
+        background: #2e3a45;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    /* Heading Styling */
+    .login-form h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    /* Input Group Styling */
+    .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .input-group label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 5px;
+        color: #cfcfcf;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #3a4b59;
+        border-radius: 4px;
+        background: #1e2a34;
+        color: #ffffff;
+        font-size: 16px;
+    }
+
+    .input-group input:focus {
+        outline: none;
+        border-color: #4a90e2;
+    }
+
+    /* Button Styling */
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background: #4a90e2;
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background: #357abd;
+    }
+</style> 
+</head>
+<body>
+{% block content %}
+    <div class="scroll-container">
+        <div class="login-form">
+            <h1>Login</h1>
+            <form method="post" action="{% url 'Logintrans1' %}" autocomplete="off">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="Name">Name</label>
+                    <input type="text" id="Name" name="Name" required>
+                </div>
+                <div class="input-group">
+                    <label for="Email">Email</label>
+                    <input type="email" id="Email" name="Email" required>
+                </div>
+                <div class="input-group">
+                    <label for="ContactNo">Contact No</label>
+                    <input type="tel" id="ContactNo" name="ContactNo" required>
+                </div>
+                <div class="input-group">
+                    <label for="Username">Username</label>
+                    <input type="text" id="Username" name="Username" required>
+                </div>
+                <div class="input-group">
+                    <label for="Password">Password</label>
+                    <input type="password" id="Password" name="Password" required>
+                </div>
+                <button type="submit">Login</button><a   href="{% url 'student_login' %}">User Login</a>
+
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+</body>
+</html>

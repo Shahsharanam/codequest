@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1e1e2f;
+            color: #c7c7c7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: #2b2b3b;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            width: 350px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #76c7c0;
+        }
+
+        .field {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 12px 15px;
+            padding-left: 40px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #1f1f2e;
+            color: #c7c7c7;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .field input::placeholder {
+            color: #7a7a8c;
+        }
+
+        .fa {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: #76c7c0;
+            font-size: 18px;
+        }
+
+        .btn {
+            background-color: #76c7c0;
+            color: #1e1e2f;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #5aa7a3;
+        }
+
+        .show {
+            cursor: pointer;
+            color: #76c7c0;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            user-select: none;
+            font-size: 14px;
+        }
+
+        .pass {
+            margin-bottom: 10px;
+            text-align: right;
+            color: #76c7c0;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .field .space {
+            margin-top: 20px;
+        }
+
+        .footer-text {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #6b6b7e;
+        }
+
+        .code-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>User Login</h2>
+        {% block content %}
+        <form method="POST" action="student_login1" autocomplete="off">
+            {% csrf_token %}
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input type="text" required name="Username" placeholder="Username" value="{{ Username }}" autofocus>
+            </div>
+            <div class="field space">
+                <span class="fa fa-lock"></span>
+                <input name="Password" class="pass-key" required placeholder="Password" type="password"
+                       value="{{ Password }}">
+                <span class="show" onclick="togglePassword()">SHOW</span>
+            </div>
+            <div class="field">
+                <input type="submit" value="LOGIN" name="submit" class="btn">
+            </div>  
+        </form>
+        {% endblock content %}
+    </div>
+
+    <div class="code-background"></div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.querySelector('.pass-key');
+            const showBtn = document.querySelector('.show');
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                showBtn.textContent = "HIDE";
+            } else {
+                passwordField.type = "password";
+                showBtn.textContent = "SHOW";
+            }
+        }
+    </script>
+</body>
+</html>

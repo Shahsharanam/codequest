@@ -1,0 +1,21 @@
+{% include 'topic.html' %}
+    {% block content %}
+    <form method="post" action="" autocomplete="off">
+        {% csrf_token %}
+        <!-- <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+
+    <dotlottie-player src="https://lottie.host/476c159f-569e-43f3-b58c-faa0f79f582e/SYLCVf7wve.json" background="transparent" speed="1" style="width: 900px; height: 900px;" loop autoplay></dotlottie-player> -->
+    <!-- <audio src="C:\Users\shara\OneDrive\Desktop\emiy(legacy) correct Q1.mp3" loop autoplay></audio> -->
+<!-- HTML5 Video Tag -->
+ <div>
+<video  src="static/assets/videos/main2.mp4" width="640" height="360" controls loop muted></video>
+</div>
+    {{form}}
+    <!-- <button type="submit">Click to show quiz</button> -->
+    <div class="playnow_bt"><a href="{% url 'quiz2' %}">Click to show quiz</a></div>
+                     
+</div>
+</form>
+    {% endblock content %}
+</body>
+</html>

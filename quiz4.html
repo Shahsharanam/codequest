@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: String Functions Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .quiz-container {
+            width: 50%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options {
+            margin: 10px;
+        }
+        .options input {
+            margin: 10px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        #feedback {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #hint-btn {
+            display: none;
+            margin-top: 10px;
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #hint-btn:hover {
+            background-color: #0b7dda;
+        }
+        #digital-guide {
+            display: none;
+            margin-top: 20px;
+            background: #e0f7fa;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .video-container {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container" id="quiz-container">
+        <h2>Quiz 4: String Functions</h2>
+        <div class="question">
+            Which of the following functions is used to find the length of a string in C?
+        </div>
+        <div class="options">
+            <input type="radio" name="q4" id="option-a" value="correct"> a) strlen<br>
+            <input type="radio" name="q4" id="option-b" value="wrong"> b) strcat<br>
+            <input type="radio" name="q4" id="option-c" value="wrong"> c) strcmp<br>
+            <input type="radio" name="q4" id="option-d" value="wrong"> d) strcpy<br>
+        </div>
+        
+        <button class="btn" id="submit-btn">Submit</button>
+
+        <div id="feedback"></div>
+        <button id="hint-btn">Get Hint</button>
+
+        <div id="digital-guide">
+            <h3>Digital Guide's Hint</h3>
+            <p>"That’s okay, but remember, strlen is what you use to find the length of a string. Take another look!"</p>
+        </div>
+
+        <!-- Correct Answer Video Container -->
+        <div class="video-container" id="correct-video-container">
+            <video id="correct-video" width="320" height="240" controls>
+                <source src="static/assets/videos/rightans4.mp4" type="video/mp4">
+            </video>
+            <div class="playnow_bt"><a href="{% url 'strings5' %}">Click for next Chapter</a></div>
+        </div>
+
+        <!-- Hint Video Container -->
+        <div class="video-container" id="hint-video-container">
+            <video id="hint-video" width="320" height="240" controls>
+                <source src="static/assets/videos/oops4.mp4" type="video/mp4">
+              
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const submitBtn = document.getElementById('submit-btn');
+        const feedback = document.getElementById('feedback');
+        const hintBtn = document.getElementById('hint-btn');
+        const digitalGuide = document.getElementById('digital-guide');
+        const correctVideoContainer = document.getElementById('correct-video-container');
+        const correctVideo = document.getElementById('correct-video');
+        const hintVideoContainer = document.getElementById('hint-video-container');
+        const hintVideo = document.getElementById('hint-video');
+
+        submitBtn.addEventListener('click', function() {
+            const selectedOption = document.querySelector('input[name="q4"]:checked');
+
+            if (!selectedOption) {
+                feedback.textContent = "Please select an answer.";
+                return;
+            }
+
+            if (selectedOption.value === 'correct') {
+                feedback.textContent = "The Prodigy successfully determines the length of the string, and the Sidekick exclaims: 'You nailed it! Keep going!'";
+                feedback.style.color = "green";
+                hintBtn.style.display = "none";
+                digitalGuide.style.display = "none";
+                correctVideoContainer.style.display = "block"; // Show the correct answer video container
+                correctVideo.play(); // Play the correct answer video
+            } else {
+                feedback.textContent = "Incorrect answer.";
+                feedback.style.color = "red";
+                hintBtn.style.display = "block";
+                correctVideoContainer.style.display = "none"; // Hide the correct answer video if incorrect
+            }
+        });
+
+        hintBtn.addEventListener('click', function() {
+            digitalGuide.style.display = "block";
+            hintVideoContainer.style.display = "block"; // Show the hint video container
+            hintVideo.play(); // Play the hint video
+        });
+    </script>
+</body>
+</html>

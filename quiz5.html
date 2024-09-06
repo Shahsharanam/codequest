@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: String Memory Allocation Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .quiz-container {
+            width: 50%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options {
+            margin: 10px;
+        }
+        .options input {
+            margin: 10px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        #feedback {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #hint-btn {
+            display: none;
+            margin-top: 10px;
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #hint-btn:hover {
+            background-color: #0b7dda;
+        }
+        #digital-guide {
+            display: none;
+            margin-top: 20px;
+            background: #e0f7fa;
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container" id="quiz-container">
+        <h2>Quiz 5: String Memory Allocation</h2>
+        <div class="question">
+            What is wrong with the following code?
+            <pre>
+char *str;
+strcpy(str, "Hello");
+            </pre>
+        </div>
+        <div class="options">
+            <input type="radio" name="q5" id="option-a" value="wrong"> a) Nothing<br>
+            <input type="radio" name="q5" id="option-b" value="correct"> b) str is not initialized properly<br>
+            <input type="radio" name="q5" id="option-c" value="wrong"> c) strcpy cannot copy a string<br>
+            <input type="radio" name="q5" id="option-d" value="wrong"> d) Memory for str is automatically allocated<br>
+        </div>
+        
+        <button class="btn" id="submit-btn">Submit</button>
+
+        <div id="feedback"></div>
+        <button id="hint-btn">Get Hint</button>
+
+        <div id="digital-guide">
+            <h3>Digital Guide's Hint</h3>
+            <p>"You’re almost there! Remember, memory needs to be allocated before copying a string. Try again and finish strong!"</p>
+        </div>
+    </div>
+
+    <script>
+        const submitBtn = document.getElementById('submit-btn');
+        const feedback = document.getElementById('feedback');
+        const hintBtn = document.getElementById('hint-btn');
+        const digitalGuide = document.getElementById('digital-guide');
+
+        submitBtn.addEventListener('click', function() {
+            const selectedOption = document.querySelector('input[name="q5"]:checked');
+
+            if (!selectedOption) {
+                feedback.textContent = "Please select an answer.";
+                return;
+            }
+
+            if (selectedOption.value === 'correct') {
+                feedback.textContent = "The Prodigy wins the final battle, restoring the digital realm. The Mentor congratulates the Prodigy: 'You have mastered the ways of strings. Well done!'";
+                feedback.style.color = "green";
+                hintBtn.style.display = "none";
+                digitalGuide.style.display = "none";
+            } else {
+                feedback.textContent = "Incorrect answer.";
+                feedback.style.color = "red";
+                hintBtn.style.display = "block";
+            }
+        });
+
+        hintBtn.addEventListener('click', function() {
+            digitalGuide.style.display = "block";
+        });
+    </script>
+</body>
+</html>
+
+

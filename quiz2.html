@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: String Concatenation Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        .quiz-container {
+            width: 50%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options {
+            margin: 10px;
+        }
+        .options input {
+            margin: 10px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        #feedback {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        #hint-btn {
+            display: none;
+            margin-top: 10px;
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #hint-btn:hover {
+            background-color: #0b7dda;
+        }
+        #digital-guide {
+            display: none;
+            margin-top: 20px;
+            background: #e0f7fa;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .video-container {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .video-container video {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container" id="quiz-container">
+        <h2>Quiz 2: String Concatenation</h2>
+        <div class="question">
+            What will be the output of this code?
+            <pre>
+char str1[] = "Code";
+char str2[] = "Quest";
+strcat(str1, str2);
+printf("%s", str1);
+            </pre>
+        </div>
+        <div class="options">
+            <input type="radio" name="q2" id="option-a" value="wrong"> a) Code Quest<br>
+            <input type="radio" name="q2" id="option-b" value="correct"> b) CodeQuest<br>
+            <input type="radio" name="q2" id="option-c" value="wrong"> c) QuestCode<br>
+            <input type="radio" name="q2" id="option-d" value="wrong"> d) Error<br>
+        </div>
+        
+        <button class="btn" id="submit-btn">Submit</button>
+
+        <div id="feedback"></div>
+        <button id="hint-btn">Get Hint</button>
+
+        <div id="digital-guide">
+            <h3>Digital Guide's Hint</h3>
+            <p>"So close! Remember, C concatenates strings exactly as they are without adding spaces. Try again!"</p>
+        </div>
+
+        <!-- Video shown when the correct answer is chosen -->
+        <div class="video-container" id="success-video-container">
+            <video id="success-video" width="480" height="270" controls>
+                <source src="static/assets/videos/rightans2.mp4" type="video/mp4">
+                
+            </video>
+            <div class="playnow_bt"><a href="{% url 'strings3' %}">Click for next Chapter</a></div>
+        </div>
+        
+        <!-- Video played when the hint button is clicked -->
+        <div class="video-container" id="hint-video-container">
+            <video id="hint-video" width="480" height="270" controls>
+                <source src="static/assets/videos/oops2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+ 
+    <script>
+        const submitBtn = document.getElementById('submit-btn');
+        const feedback = document.getElementById('feedback');
+        const hintBtn = document.getElementById('hint-btn');
+        const digitalGuide = document.getElementById('digital-guide');
+        const successVideoContainer = document.getElementById('success-video-container');
+        const hintVideoContainer = document.getElementById('hint-video-container');
+
+        submitBtn.addEventListener('click', function() {
+            const selectedOption = document.querySelector('input[name="q2"]:checked');
+
+            if (!selectedOption) {
+                feedback.textContent = "Please select an answer.";
+                return;
+            }
+
+            if (selectedOption.value === 'correct') {
+                feedback.textContent = "The Prodigy Coder’s gadgets spark as the strings are successfully concatenated. The Sidekick chimes in: 'Boom! You’re piecing it all together!'";
+                feedback.style.color = "green";
+                hintBtn.style.display = "none";
+                digitalGuide.style.display = "none";
+                successVideoContainer.style.display = "block";
+                document.getElementById('success-video').play(); // Play the success video
+            } else {
+                feedback.textContent = "Incorrect answer.";
+                feedback.style.color = "red";
+                hintBtn.style.display = "block";
+            }
+        });
+
+        hintBtn.addEventListener('click', function() {
+            digitalGuide.style.display = "block";
+            hintVideoContainer.style.display = "block";
+            document.getElementById('hint-video').play(); // Play the hint video
+        });
+    </script>
+</body>
+</html>
